@@ -23,7 +23,7 @@
         <div class="tab-content" id="mytab-content">
           <div class="tab-pane fade show active " id="cant" role="tabpanel" aria-labelledby="cant-tab">
           	<span class="text-info">Por favor complete todos los campos con la información solicitada.</span>
-            <form method="post" action="printList.php" class="bg-gradient-info" enctype="multipart/form-data" >
+            <form method="post" action="views/modules/printList.php" class="bg-gradient-info" enctype="multipart/form-data" >
               <div class="row">
                 <div class="col">
                   <div class="input-group bottom">
@@ -75,7 +75,7 @@
           </div>
           <div class="tab-pane fade" id="enterprise" role="tabpanel" aria-labelledby="enterprise-tab">
             <span class="text-info">Por favor complete todos los campos con la información solicitada.</span>
-            <form method="post" action="printList.php" enctype="multipart/form-data" >
+            <form method="post" action="views/modules/printList.php" enctype="multipart/form-data" >
               <div class="row">
                 <div class="col">
                   <div class="input-group bottom">
