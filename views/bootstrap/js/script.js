@@ -4,7 +4,7 @@ function addFields(etiqueta, nombre, container){
 		html = '<div class="input-group bottom items"><div class="input-group-prepend">';
 		html +='<span class="input-group-text">'+etiqueta+'</span>';
 		html +='</div>';
-		html +='<input type="text" class="form-control" name="descripcion'+nombre+'" placeholder="Escribe una descripción corta del premio" />';
+		html +='<input type="text" class="form-control" name="descripcion'+nombre+'[]" placeholder="Escribe una descripción corta del premio" />';
 		html +='<label><input type="file" class="form-control" style="display:none;" name="'+nombre+'[]" maxlength="75" /><span class=" btn btn-success form-control fa fa-upload"  data-toggle="tooltip" data-placement="top" title="Agrega una imagen del premio"></span></label>';
 		html += '<div class="input-group-prepend"><button onclick="$(this).parents(';
 		html +="'.items'";
