@@ -90,7 +90,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text" >Hasta</span>
                     </div>
-                    <input type="number" class="form-control" name="desde"  required />
+                    <input type="number" class="form-control" name="hasta"  required />
                   </div>
                 </div>
               </div>

@@ -4,11 +4,12 @@
   //Controladores
   require_once "controllers/encript.php";
   require_once "controllers/enrutador.php";
-  //require_once "controllers/install.php";
-
+  require_once "controllers/ctrList.php";
+  
   //modelos
   require_once "models/enrutador.php";
   //require_once "models/install.php";
+
 
   $plantilla = new routerC();
   $plantilla->getTemplate();
