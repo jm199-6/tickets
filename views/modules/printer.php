@@ -6,7 +6,8 @@
 </style>
 <style>
 .lista{
-  border: 1px dotted #ccc;
+  border-left: 1px dotted #ccc;
+  border-right: 1px dotted #ccc;
   float:left;
   width: 50%;
   padding: 25px;

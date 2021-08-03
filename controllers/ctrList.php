@@ -46,8 +46,20 @@ date_default_timezone_set("America/El_Salvador");
                   ?>
                   <div class="premiosDetalle">
                     <h4><?php echo $j+1; ?>° Premio</h4>
-                    <img src="../../<?php echo $data['imgPremios'][$j]; ?>" class="imgPremio"/><br>
-                    <span><?php echo $data["descripcionPremios"][$j]; ?></span>
+                    <?php
+                      if(count($data['imgPremios'])==0){
+                        ?>
+                        <div style="height: 75px;">&nbsp;</div>
+                        <span><?php echo $data["descripcionPremios"][$j]; ?></span>
+                        <?php
+                      }else{
+                        ?>
+                        <img src="../../<?php echo $data['imgPremios'][$j]; ?>" class="imgPremio"/><br>
+                        <span><?php echo $data["descripcionPremios"][$j]; ?></span>
+                        <?php
+                      }
+                     ?>
+
                   </div>
                   <?php
                 }
@@ -70,7 +82,7 @@ date_default_timezone_set("America/El_Salvador");
               <span style="float:left;">Nombre</span><span style="float: right;">Telefono</span><br>
               <?php
               for ($j=1; $j <= $data["cantNum"] ; $j++) {
-                if($j==10){
+                if($j>=10){
                     echo $j.". _____________________________<span style='margin-left: 25px;'>_________________</span><br>";
                 }else{
                   echo $j.". ______________________________<span style='margin-left: 25px;'>_________________</span><br>";
