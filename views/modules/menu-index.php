@@ -8,12 +8,12 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
-
         <li id="pg1" class="nav-item">
           <a class="nav-link" href="./?p=<?php echo $sec->encript("listas"); ?>">Listas</a>
         </li>
-
+        <li id="pg2" class="nav-item">
+          <a class="nav-link" href="./?p=<?php echo $sec->encript("tickets"); ?>">Tickets</a>
+        </li>
       </ul>
-      
     </div>
 </nav>

@@ -25,6 +25,20 @@ $(document).ready(function(){
 	$("#closeNoti").click(function(){
 		$("#notificacion").removeClass("show");
 	});
+	$("#note").click(function(){
+		if($(this).is(":checked")){
+			$("#nota").removeAttr("disabled");
+		}else{
+			$("#nota").attr("disabled","disabled");
+		}
+	});
+	$("#note1").click(function(){
+		if($(this).is(":checked")){
+			$("#nota1").removeAttr("disabled");
+		}else{
+			$("#nota1").attr("disabled","disabled");
+		}
+	});
 	$(function () {
 	  $('[data-toggle="tooltip"]').tooltip();
 	});
@@ -36,39 +50,4 @@ function showNotification(message, style){
 }
 function setTtle(title){
   document.title = title;
-}
-
-function setGuion(type,id){
-	// 1-dui, 2-telefono, 3-nit
-	digits = 0;
-	dNit=0;
-	element = document.getElementById(id);
-	valor=element.value;
-	switch(type){
-		case 1:
-			digits = 8;
-			break;
-		case 2:
-			digits = 4;
-			break;
-		case 3:
-			dNit = {"d1":4,"d2":11,"d3":15};
-			break;
-	}
-	if(valor.length == digits && !(digits==0)){
-		element.value=valor+"-";
-	}else if((valor.length == dNit.d1 || valor.length == dNit.d2 || valor.length == dNit.d3) && !(dNit==0)) {
-		element.value=valor+"-";
-	}
-}
-
-function vPwd(idSelf,id1, id2){
-	valor="";
-	if($("#"+idSelf).checked){
-		valor="text";
-	}else{
-		valor="password";
-	}
-	$("#"+id1).attr("type",valor);
-	$("#"+id2).attr("type",valor);
 }

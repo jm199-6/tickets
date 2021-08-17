@@ -3,7 +3,7 @@
 
 
     public static function getPage($r){
-      $validRoutes = array('index', 'logout', 'listas', 'install', '404', 'menu-index');
+      $validRoutes = array('index', 'logout', 'listas', 'tickets', 'install', '404', 'menu-index');
 
       for ($i=0; $i < count($validRoutes); $i++) {
         if($r==$validRoutes[$i]){
