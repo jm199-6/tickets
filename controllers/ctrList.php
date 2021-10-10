@@ -1,7 +1,10 @@
 <?php
 date_default_timezone_set("America/El_Salvador");
+
   class CtrList{
+
     private function getUploadedFiles($arrayFiles){
+
       $premios=array();
       for($i=0; $i<count($arrayFiles["tmp_name"]); $i++){
         if(is_uploaded_file($arrayFiles["tmp_name"][$i])){
@@ -40,9 +43,21 @@ date_default_timezone_set("America/El_Salvador");
           </tr>
           <tr>
             <td class="premios">
-              <br><br>
+              <br>
               <?php
+              if(count($data["descripcionPremios"])==1){
+                ?>
+                <div style="width: 33%; float:left;">&nbsp</div>
+                <?php
+              }else if (count($data["descripcionPremios"])==2){
+                ?>
+                <div style="width: 20%; float:left;">&nbsp</div>
+                <?php
+              }else{
+
+              }
                 for ($j=0; $j < count($data["descripcionPremios"]) ; $j++) {
+
                   ?>
                   <div class="premiosDetalle">
                     <h4><?php echo $j+1; ?>° Premio</h4>
@@ -53,10 +68,17 @@ date_default_timezone_set("America/El_Salvador");
                         <span><?php echo $data["descripcionPremios"][$j]; ?></span>
                         <?php
                       }else{
+                        if($data["printGrayScale"]==true){
                         ?>
-                        <img src="../../<?php echo $data['imgPremios'][$j]; ?>" class="imgPremio"/><br>
+                          <img src="../../<?php echo $data['imgPremios'][$j]; ?>" class="imgPremio grayscale"/>
+                        <?php
+                        }else{
+                         ?>
+                         <img src="../../<?php echo $data['imgPremios'][$j]; ?>" class="imgPremio"/>
+                        <br>
                         <span><?php echo $data["descripcionPremios"][$j]; ?></span>
                         <?php
+                        }
                       }
                      ?>
 
@@ -68,24 +90,25 @@ date_default_timezone_set("America/El_Salvador");
           </tr>
           <tr>
             <td>
-              <br><br>
+              <br>
               <?php
                 $mes = array(1 => "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio","Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
               ?>
-              Fecha de la rifa: <?php echo date("d", strtotime($data["fechaRifa"]))." de ".$mes[date("n",strtotime($data["fechaRifa"]))]." de ".date("Y",strtotime($data["fechaRifa"])); ?>
+              A beneficio de: <?php echo $data["ben"]; ?>
+              <br>Fecha de la rifa: <?php echo date("d", strtotime($data["fechaRifa"]))." de ".$mes[date("n",strtotime($data["fechaRifa"]))]." de ".date("Y",strtotime($data["fechaRifa"])); ?>
               <br>Valor del Numero: $<?php echo $data["precio"]; ?>
             </td>
           </tr>
           <tr>
             <td>
-              <br><br>
-              <span style="float:left;">Nombre</span><span style="float: right;">Telefono</span><br>
+              <br>
+              <span style="margin-left: 100px;">Nombre</span><span style="margin-left: 150px;">Telefono</span><br>
               <?php
               for ($j=1; $j <= $data["cantNum"] ; $j++) {
                 if($j>=10){
-                    echo $j.". _____________________________<span style='margin-left: 25px;'>_________________</span><br>";
+                  echo $j.". ____________________________<span style='margin-left: 25px;'>________________</span><br>";
                 }else{
-                  echo $j.". ______________________________<span style='margin-left: 25px;'>_________________</span><br>";
+                  ?>&nbsp;&nbsp;<?php echo $j.". ____________________________<span style='margin-left: 25px;'>________________</span><br>";
                 }
 
               }
@@ -94,7 +117,7 @@ date_default_timezone_set("America/El_Salvador");
           </tr>
           <tr>
             <td>
-              <br><br>
+              <br>
               Vendida por: _______________________________________
               <br><br><br>
             </td>
@@ -105,31 +128,58 @@ date_default_timezone_set("America/El_Salvador");
     }
 
     public function printList(){
-      if(isset($_POST["createList"])){
-            $premios=$this->getUploadedFiles($_FILES["premios"]);
-            $data = array("cant" => $_POST["cant"],
-            "descripcionPremios" =>$_POST["descripcionpremios"],
-            "imgPremios" => $premios,
-            "title" => $_POST["title"],
-            "fechaRifa" => $_POST["fechaRifa"],
-            "cantNum" => $_POST["cantNum"],
-            "precio" => $_POST["precio"] );
 
+      if(isset($_POST["createList"])){
+            if(isset($_FILES["premios"])){
+              if(isset($_POST["gray"])){
+                $gray = $_POST["gray"];
+              }else{
+                $gray = false;
+              }
+              $premios=$this->getUploadedFiles($_FILES["premios"]);
+              $data = array("cant" => $_POST["cant"],
+              "descripcionPremios" =>$_POST["descripcionpremios"],
+              "imgPremios" => $premios,
+              "title" => $_POST["title"],
+              "ben" => $_POST["ben"],
+              "fechaRifa" => $_POST["fechaRifa"],
+              "cantNum" => $_POST["cantNum"],
+              "precio" => $_POST["precio"],
+              "printGrayScale" => $gray);
+            }else{
+              include "../../controllers/encript.php";
+              $sec = new Seguridad();
+              echo "<script>alert('Debe agregar por lo menos 1 premio');window.location='../../?p=".$sec->encript("listas")."'</script>";
+            }
             $this->printTable($data);
       }
     }
 
     public function printListR(){
       if(isset($_POST["createListR"])){
-        $premios=$this->getUploadedFiles($_FILES["premios"]);
-        $data = array("desde" => $_POST["desde"],
-        "hasta" => $_POST["hasta"],
-        "descripcionPremios" =>$_POST["descripcionpremios"],
-        "imgPremios" => $premios,
-        "title" => $_POST["title"],
-        "fechaRifa" => $_POST["fechaRifa"],
-        "cantNum" => $_POST["cantNum"],
-        "precio" => $_POST["precio"] );
+        if(isset($_FILES["premios"])){
+          if(isset($_POST["gray"])){
+            $gray = $_POST["gray"];
+          }else{
+            $gray = false;
+          }
+          $premios=$this->getUploadedFiles($_FILES["premios"]);
+          $data = array("desde" => $_POST["desde"],
+          "hasta" => $_POST["hasta"],
+          "descripcionPremios" =>$_POST["descripcionpremios"],
+          "imgPremios" => $premios,
+          "title" => $_POST["title"],
+          "ben" => $_POST["ben"],
+          "fechaRifa" => $_POST["fechaRifa"],
+          "cantNum" => $_POST["cantNum"],
+          "precio" => $_POST["precio"],
+          "printGrayScale" => $gray);
+
+        }else{
+          include "../../controllers/encript.php";
+          $sec = new Seguridad();
+          echo "<script>alert('Debe agregar por lo menos 1 premio');window.location='../../?p=".$sec->encript("listas")."'</script>";
+        }
 
         $this->printTable($data);
       }

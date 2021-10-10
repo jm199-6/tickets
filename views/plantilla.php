@@ -17,6 +17,14 @@
     <script src="./views/bootstrap/js/bootstrap.bundle.js" charset="utf-8"></script>
     <script src="./views/bootstrap/js/script.js" charset="utf-8"></script>
 
+    <style media="screen">
+      body{
+        background: url("./media/img/background.jpg");
+      }
+      .card{
+        background: #d8cecebf;
+      }
+    </style>
   </head>
   <body>
     <header>

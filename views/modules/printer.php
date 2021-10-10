@@ -21,6 +21,10 @@
 .imgPremio{
   width: 50px;
   height: 75px;
+
+}
+.grayscale{
+  filter: grayscale(100%);
 }
 .title{
   text-align: center;

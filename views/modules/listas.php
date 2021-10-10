@@ -22,7 +22,7 @@
           </ul>
         <div class="tab-content" id="mytab-content">
           <div class="tab-pane fade show active " id="cant" role="tabpanel" aria-labelledby="cant-tab">
-          	<span class="text-info">Por favor complete todos los campos con la información solicitada.</span>
+          	<span class="text-danger">Por favor complete todos los campos con la información solicitada.</span>
             <form method="post" action="views/modules/printList.php" class="bg-gradient-info" enctype="multipart/form-data" >
               <div class="row">
                 <div class="col">
@@ -49,6 +49,12 @@
                     </div>
                     <input type="text" class="form-control" name="title" required />
                   </div>
+                  <div class="input-group bottom">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">A beneficio de </span>
+                    </div>
+                    <input type="text" class="form-control" name="ben" required />
+                  </div>
                   <div class="input-group bottom ">
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="validatedInputGroupPrepend3"><span class="fa fa-calendar"></span>Fecha de la Rifa</span>
@@ -66,6 +72,9 @@
                       <span class="input-group-text" id="validatedInputGroupPrepend3">Valor del Numero $</span>
                     </div>
                     <input type="number" class="form-control" min="0" step="0.01" name="precio" aria-describedby="validatedInputGroupPrepend3">
+                  </div>
+                  <div class="input-group bottom ">
+                    <label><input type="checkbox"  name="gray" aria-describedby="validatedInputGroupPrepend3">Imprimir a escala de gises</label>
                   </div>
                 </div>
               </div>
@@ -106,6 +115,12 @@
                     </div>
                     <input type="text" class="form-control" name="title" required />
                   </div>
+                  <div class="input-group bottom">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">A beneficio de </span>
+                    </div>
+                    <input type="text" class="form-control" name="ben" required />
+                  </div>
                   <div class="input-group bottom ">
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="validatedInputGroupPrepend3"><span class="fa fa-calendar"></span>Fecha de la Rifa</span>
@@ -123,6 +138,9 @@
                       <span class="input-group-text"  id="validatedInputGroupPrepend3">Valor del Numero $</span>
                     </div>
                     <input type="number" class="form-control" min="0" step="0.01" name="precio" aria-describedby="validatedInputGroupPrepend3">
+                  </div>
+                  <div class="input-group bottom ">
+                    <label><input type="checkbox"  name="gray" aria-describedby="validatedInputGroupPrepend3">Imprimir a escala de gises</label>
                   </div>
                 </div>
               </div>
