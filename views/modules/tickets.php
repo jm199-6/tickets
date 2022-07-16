@@ -45,6 +45,12 @@
                     </div>
                     <input type="text" class="form-control" name="lugar" required />
                   </div>
+                  <div class="input-group bottom">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">A beneficio de</span>
+                    </div>
+                    <input type="text" class="form-control" name="beneficio" />
+                  </div>
                   <div class="input-group bottom ">
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="validatedInputGroupPrepend3">Fecha</span>
@@ -67,9 +73,9 @@
               </div>
               <div class="input-group bottom">
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><input type="checkbox" id="note" name="note" /> Nota Adicional</span>
+                  <span class="input-group-text"><input type="checkbox" id="note" name="note"/> Nota Adicional</span>
                 </div>
-                <input type="text" class="form-control" id="nota" name="nota" disabled required />
+                <input type="text" class="form-control" id="nota" name="nota" disabled required maxlength="60" />
               </div>
               <input type="submit" class="btn btn-primary right" name="createTicket" value="Generar">
             </form>
@@ -104,6 +110,12 @@
                     </div>
                     <input type="text" class="form-control" name="lugar" required />
                   </div>
+                  <div class="input-group bottom">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">A beneficio de</span>
+                    </div>
+                    <input type="text" class="form-control" name="beneficio" />
+                  </div>
                   <div class="input-group bottom ">
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="validatedInputGroupPrepend3">Fecha</span>
@@ -126,9 +138,9 @@
               </div>
               <div class="input-group bottom">
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><input type="checkbox" id="note1" name="note" /> Nota Adicional</span>
+                  <span class="input-group-text"><input type="checkbox" id="note1" name="note"  /> Nota Adicional</span>
                 </div>
-                <input type="text" class="form-control" id="nota1" name="nota" disabled required />
+                <input type="text" class="form-control" id="nota1" name="nota" disabled required maxlength="60"/>
               </div>
 
               <input type="submit" class="btn btn-primary right" name="createTicketR" value="Continuar">

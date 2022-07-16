@@ -60,7 +60,7 @@ date_default_timezone_set("America/El_Salvador");
 
                   ?>
                   <div class="premiosDetalle">
-                    <h4><?php echo $j+1; ?>° Premio</h4>
+                    <h4><?php //echo $j+1; ?> Premio</h4>
                     <?php
                       if(count($data['imgPremios'])==0){
                         ?>

@@ -33,9 +33,9 @@ date_default_timezone_set("America/El_Salvador");
           $ceros="";
         }
         ?>
-        <table class="lista">
+        <table class="ticket">
           <tr>
-            <td class="title"><h3>GRAN EXCURSION A "<?php echo $data["lugar"]; ?>"; </h3></td>
+            <td class="title"><h3>GRAN EXCURSION A <br>"<?php echo $data["lugar"]; ?>" </h3></td>
           </tr>
 
           <tr>
@@ -43,7 +43,8 @@ date_default_timezone_set("America/El_Salvador");
               <?php
                 $mes = array(1 => "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio","Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
               ?>
-              Fecha a realizarse: <?php echo date("d", strtotime($data["fecha"]))." de ".$mes[date("n",strtotime($data["fecha"]))]." de ".date("Y",strtotime($data["fecha"])); ?>
+              <?php echo $data["beneficio"]; ?>
+              <br>Fecha a realizarse: <?php echo date("d", strtotime($data["fecha"]))." de ".$mes[date("n",strtotime($data["fecha"]))]." de ".date("Y",strtotime($data["fecha"])); ?>
               <br>Hora de Salida: <?php echo date("h", strtotime($data["hora"])).":".date("i",strtotime($data["hora"]))." ".date("a",strtotime($data["hora"])); ?>
               <br>Valor del Ticket: $<?php echo $data["precio"]; ?>
               <br>
@@ -57,20 +58,21 @@ date_default_timezone_set("America/El_Salvador");
     }
 
     public function printTicket(){
-      /*cant 1
-        lugar 1
-        fecha 1
-        hora  1
-        precio  1
-        note 1*/
+
       if(isset($_POST["createTicket"])){
             if(isset($_POST["nota"])){
-              $note=$_POST["nota"];
+              $note="Nota: ".$_POST["nota"];
             }else{
-              $note="";
+              $note="<br>";
+            }
+            if(isset($_POST["beneficio"])){
+              $beneficio="A beneficio de: ".$_POST["beneficio"];
+            }else{
+              $beneficio="<br>";
             }
             $data = array("cant" => $_POST["cant"],
             "lugar" =>$_POST["lugar"],
+            "beneficio" => $beneficio,
             "fecha" => $_POST["fecha"],
             "hora" => $_POST["hora"],
             "precio" => $_POST["precio"],
@@ -81,15 +83,22 @@ date_default_timezone_set("America/El_Salvador");
     }
 
     public function printTicketR(){
-      if(isset($_POST["createListR"])){
+      if(isset($_POST["createTicketR"])){
+
         if(isset($_POST["nota"])){
-          $note=$_POST["nota"];
+          $note="Nota: ".$_POST["nota"];
         }else{
-          $note="";
+          $note="<br>";
+        }
+        if(isset($_POST["beneficio"])){
+          $beneficio="A beneficio de: ".$_POST["beneficio"];
+        }else{
+          $beneficio="<br>";
         }
         $data = array("desde" => $_POST["desde"],
         "hasta" => $_POST["hasta"],
         "lugar" =>$_POST["lugar"],
+        "beneficio" => $beneficio,
         "fecha" => $_POST["fecha"],
         "hora" => $_POST["hora"],
         "precio" => $_POST["precio"],

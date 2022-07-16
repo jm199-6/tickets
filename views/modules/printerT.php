@@ -1,6 +1,10 @@
 <style media="print">
   @page {
     size: portrait;
+    margin-top:10mm;
+    margin-left: 5mm;
+    margin-right: 5mm;
+    margin-bottom: 10mm;
   }
 
 </style>
@@ -8,6 +12,12 @@
 .lista{
   border-left: 1px dotted #ccc;
   border-right: 1px dotted #ccc;
+  float:left;
+  width: 50%;
+  padding: 25px;
+}
+.ticket{
+  border: 1px dotted #ccc;
   float:left;
   width: 50%;
   padding: 25px;
