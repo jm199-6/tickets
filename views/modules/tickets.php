@@ -47,9 +47,9 @@
                   </div>
                   <div class="input-group bottom">
                     <div class="input-group-prepend">
-                      <span class="input-group-text">A beneficio de</span>
+                      <span class="input-group-text"><input type="checkbox" id="chk-beneficio" name="chk-beneficio"/>A beneficio de</span>
                     </div>
-                    <input type="text" class="form-control" name="beneficio" />
+                    <input type="text" class="form-control" id="beneficio" disabled required name="beneficio" />
                   </div>
                   <div class="input-group bottom ">
                     <div class="input-group-prepend">
@@ -62,6 +62,12 @@
                       <span class="input-group-text" id="validatedInputGroupPrepend3">Hora de Salida</span>
                     </div>
                     <input type="time" class="form-control" name="hora" aria-describedby="validatedInputGroupPrepend3">
+                  </div>
+                  <div class="input-group bottom ">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="validatedInputGroupPrepend3">Lugar de Salida</span>
+                    </div>
+                    <input type="text" class="form-control" name="lugar-s" maxlength="30" aria-describedby="validatedInputGroupPrepend3">
                   </div>
                   <div class="input-group bottom ">
                     <div class="input-group-prepend">
@@ -75,7 +81,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><input type="checkbox" id="note" name="note"/> Nota Adicional</span>
                 </div>
-                <input type="text" class="form-control" id="nota" name="nota" disabled required maxlength="60" />
+                <input type="text" class="form-control" id="nota" name="nota" disabled required maxlength="80" />
               </div>
               <input type="submit" class="btn btn-primary right" name="createTicket" value="Generar">
             </form>
@@ -87,7 +93,7 @@
                 <div class="col">
                   <div class="input-group bottom">
                     <div class="input-group-prepend">
-                      <span class="input-group-text" >Desde</span>
+                      <span class="input-group-text">Desde</span>
                     </div>
                     <input type="number" class="form-control" name="desde"  required />
                   </div>
@@ -101,7 +107,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="row">
                 <div class="col">
                   <div class="input-group bottom">
@@ -112,9 +117,9 @@
                   </div>
                   <div class="input-group bottom">
                     <div class="input-group-prepend">
-                      <span class="input-group-text">A beneficio de</span>
+                      <span class="input-group-text"><input type="checkbox" id="chk-beneficio1" name="chk-beneficio1"/>A beneficio de</span>
                     </div>
-                    <input type="text" class="form-control" name="beneficio" />
+                    <input type="text" class="form-control" id="beneficio1" disabled required name="beneficio" />
                   </div>
                   <div class="input-group bottom ">
                     <div class="input-group-prepend">
@@ -130,6 +135,12 @@
                   </div>
                   <div class="input-group bottom ">
                     <div class="input-group-prepend">
+                      <span class="input-group-text" id="validatedInputGroupPrepend3">Lugar de Salida</span>
+                    </div>
+                    <input type="text" class="form-control" name="lugar-s" maxlength="30" aria-describedby="validatedInputGroupPrepend3">
+                  </div>
+                  <div class="input-group bottom ">
+                    <div class="input-group-prepend">
                       <span class="input-group-text" id="validatedInputGroupPrepend3">Valor del ticket $</span>
                     </div>
                     <input type="number" class="form-control" min="0" step="0.01" name="precio" aria-describedby="validatedInputGroupPrepend3">
@@ -140,7 +151,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><input type="checkbox" id="note1" name="note"  /> Nota Adicional</span>
                 </div>
-                <input type="text" class="form-control" id="nota1" name="nota" disabled required maxlength="60"/>
+                <input type="text" class="form-control" id="nota1" name="nota" disabled required maxlength="80"/>
               </div>
 
               <input type="submit" class="btn btn-primary right" name="createTicketR" value="Continuar">

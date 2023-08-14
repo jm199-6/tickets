@@ -22,6 +22,9 @@
   width: 50%;
   padding: 25px;
 }
+.new-margin{
+  margin-top: 12px;
+}
 .id{
   border: 1px solid #ff0000;
   color: #ff0000;
@@ -43,3 +46,8 @@
   float: left;
 }
 </style>
+<script type="text/javascript">
+  function newmargin(id){
+    document.getElementById("tbl-ticket"+id).classList.add('new-margin');
+  }
+</script>

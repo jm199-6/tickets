@@ -1,19 +1,7 @@
 <?php
 date_default_timezone_set("America/El_Salvador");
   class CtrTicket{
-    private function getUploadedFiles($arrayFiles){
-      $premios=array();
-      for($i=0; $i<count($arrayFiles["tmp_name"]); $i++){
-        if(is_uploaded_file($arrayFiles["tmp_name"][$i])){
-          $folder = "media/img/";
-          $tmp_name = $arrayFiles["tmp_name"][$i];
-          $name = $arrayFiles["name"][$i];
-          $premios[] = $folder.$name;
-          move_uploaded_file($tmp_name,"../../".$premios[$i]);
-        }
-      }
-      return $premios;
-    }
+
     private function printTable($data){
       if(isset($data["desde"])){
         $desde=$data["desde"];
@@ -22,7 +10,10 @@ date_default_timezone_set("America/El_Salvador");
         $desde=1;
         $hasta=$data["cant"];
       }
+      $tck_impar=33;
+      $tck_par=34;
       for($i=$desde;$i<=$hasta; $i++){
+
         if($i<10){
           $ceros="000";
         }elseif ($i>=10 && $i <100) {
@@ -33,7 +24,8 @@ date_default_timezone_set("America/El_Salvador");
           $ceros="";
         }
         ?>
-        <table class="ticket">
+
+        <table id="tbl-ticket<?php echo $i; ?>" class="ticket">
           <tr>
             <td class="title"><h3>GRAN EXCURSION A <br>"<?php echo $data["lugar"]; ?>" </h3></td>
           </tr>
@@ -45,7 +37,7 @@ date_default_timezone_set("America/El_Salvador");
               ?>
               <?php echo $data["beneficio"]; ?>
               <br>Fecha a realizarse: <?php echo date("d", strtotime($data["fecha"]))." de ".$mes[date("n",strtotime($data["fecha"]))]." de ".date("Y",strtotime($data["fecha"])); ?>
-              <br>Hora de Salida: <?php echo date("h", strtotime($data["hora"])).":".date("i",strtotime($data["hora"]))." ".date("a",strtotime($data["hora"])); ?>
+              <br>Lugar y Hora Salida: <?php echo $data["lugar-s"]." - ".date("h", strtotime($data["hora"])).":".date("i",strtotime($data["hora"]))." ".date("a",strtotime($data["hora"])); ?>
               <br>Valor del Ticket: $<?php echo $data["precio"]; ?>
               <br>
               <?php echo $data["note"]; ?>
@@ -53,7 +45,21 @@ date_default_timezone_set("America/El_Salvador");
             </td>
           </tr>
         </table>
-        <?php
+        <?php if ($tck_impar==$i){
+          ?>
+          <script type="text/javascript">
+            newmargin(<?php echo $i; ?>);
+          </script>
+          <?php
+          $tck_impar+=32;
+        }else if($tck_par==$i){
+          ?>
+          <script type="text/javascript">
+            newmargin(<?php echo $i; ?>);
+          </script>
+          <?php
+          $tck_par+=32;
+        }
       }
     }
 
@@ -72,6 +78,7 @@ date_default_timezone_set("America/El_Salvador");
             }
             $data = array("cant" => $_POST["cant"],
             "lugar" =>$_POST["lugar"],
+            "lugar-s" =>$_POST["lugar-s"],
             "beneficio" => $beneficio,
             "fecha" => $_POST["fecha"],
             "hora" => $_POST["hora"],
@@ -98,6 +105,7 @@ date_default_timezone_set("America/El_Salvador");
         $data = array("desde" => $_POST["desde"],
         "hasta" => $_POST["hasta"],
         "lugar" =>$_POST["lugar"],
+        "lugar-s" =>$_POST["lugar-s"],
         "beneficio" => $beneficio,
         "fecha" => $_POST["fecha"],
         "hora" => $_POST["hora"],

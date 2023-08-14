@@ -39,11 +39,28 @@ $(document).ready(function(){
 			$("#nota1").attr("disabled","disabled");
 		}
 	});
+	$("#chk-beneficio").click(function(){
+		if($(this).is(":checked")){
+			$("#beneficio").removeAttr("disabled");
+		}else{
+			$("#beneficio").attr("disabled","disabled");
+		}
+	});
+	$("#chk-beneficio1").click(function(){
+		if($(this).is(":checked")){
+			$("#beneficio1").removeAttr("disabled");
+		}else{
+			$("#beneficio1").attr("disabled","disabled");
+		}
+	});
+
 	$(function () {
 	  $('[data-toggle="tooltip"]').tooltip();
 	});
 });
-
+function newmargin() {
+	$("#tbl-ticket").addClass("new-margin");
+}
 function showNotification(message, style){
 	document.getElementById("msg").innerHTML=message;
 	$("#notificacion").addClass(style);
