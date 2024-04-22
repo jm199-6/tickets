@@ -1,7 +1,20 @@
 <?php
 date_default_timezone_set("America/El_Salvador");
   class CtrTicket{
-
+    //Agregado de funcion getImage()
+    private function getImage($file){
+      $backgroundImage="";
+      
+        if(is_uploaded_file($file["tmp_name"])){
+          $folder = "media/img/";
+          $tmp_name = $file["tmp_name"];
+          $name = $file["name"];
+          $backgroundImage = $folder.$name;
+          move_uploaded_file($tmp_name,"../../".$backgroundImage);
+        }
+      
+      return $backgroundImage;
+    }
     private function printTable($data){
       if(isset($data["desde"])){
         $desde=$data["desde"];
@@ -10,8 +23,8 @@ date_default_timezone_set("America/El_Salvador");
         $desde=1;
         $hasta=$data["cant"];
       }
-      $tck_impar=33;
-      $tck_par=34;
+      $tck_impar=1;
+      $tck_par=2;
       for($i=$desde;$i<=$hasta; $i++){
 
         if($i<10){
@@ -24,8 +37,8 @@ date_default_timezone_set("America/El_Salvador");
           $ceros="";
         }
         ?>
-
-        <table id="tbl-ticket<?php echo $i; ?>" class="ticket">
+        
+        <table id="tbl-ticket<?php echo $i; ?>" class="ticket" style="background-image: url('<?php echo "https://".$_SERVER["SERVER_NAME"]."/".$data["bgImage"]; ?>'); background-size:cover;" >
           <tr>
             <td class="title"><h3>GRAN EXCURSION A <br>"<?php echo $data["lugar"]; ?>" </h3></td>
           </tr>
@@ -50,6 +63,7 @@ date_default_timezone_set("America/El_Salvador");
           <script type="text/javascript">
             newmargin(<?php echo $i; ?>);
           </script>
+
           <?php
           $tck_impar+=32;
         }else if($tck_par==$i){
@@ -76,6 +90,12 @@ date_default_timezone_set("America/El_Salvador");
             }else{
               $beneficio="<br>";
             }
+            if(isset($_FILES["bgImage"])){
+              $bgImage=$this->getImage($_FILES["bgImage"]);
+            }else{
+              $bgImage="";
+            }
+            
             $data = array("cant" => $_POST["cant"],
             "lugar" =>$_POST["lugar"],
             "lugar-s" =>$_POST["lugar-s"],
@@ -83,7 +103,9 @@ date_default_timezone_set("America/El_Salvador");
             "fecha" => $_POST["fecha"],
             "hora" => $_POST["hora"],
             "precio" => $_POST["precio"],
-            "note" => $note);
+            "note" => $note,
+            "bgImage" => $bgImage
+          );
 
             $this->printTable($data);
       }
@@ -102,6 +124,12 @@ date_default_timezone_set("America/El_Salvador");
         }else{
           $beneficio="<br>";
         }
+        if(isset($_FILES["bgImage"])){
+          $bgImage=$this->getImage($_FILES["bgImage"]);
+        }else{
+          $bgImage="";
+        }
+        
         $data = array("desde" => $_POST["desde"],
         "hasta" => $_POST["hasta"],
         "lugar" =>$_POST["lugar"],
@@ -110,7 +138,9 @@ date_default_timezone_set("America/El_Salvador");
         "fecha" => $_POST["fecha"],
         "hora" => $_POST["hora"],
         "precio" => $_POST["precio"],
-        "note" => $note );
+        "note" => $note,
+        "bgImage" => $bgImage
+       );
 
         $this->printTable($data);
       }

@@ -53,13 +53,26 @@ $(document).ready(function(){
 			$("#beneficio1").attr("disabled","disabled");
 		}
 	});
-
+	$("#image").click(function(){
+		if($(this).is(":checked")){
+			$("#bgImage").removeAttr("disabled");
+		}else{
+			$("#bgImage").attr("disabled","disabled");
+		}
+	});
+	$("#image1").click(function(){
+		if($(this).is(":checked")){
+			$("#bgImage1").removeAttr("disabled");
+		}else{
+			$("#bgImage1").attr("disabled","disabled");
+		}
+	});
 	$(function () {
 	  $('[data-toggle="tooltip"]').tooltip();
 	});
 });
-function newmargin() {
-	$("#tbl-ticket").addClass("new-margin");
+function newmargin(id) {
+	$("#tbl-ticket"+id).addClass("new-margin");
 }
 function showNotification(message, style){
 	document.getElementById("msg").innerHTML=message;

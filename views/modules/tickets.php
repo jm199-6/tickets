@@ -83,6 +83,16 @@
                 </div>
                 <input type="text" class="form-control" id="nota" name="nota" disabled required maxlength="80" />
               </div>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <label class="input-group-text"><input type="checkbox" id="image" name="image"/></label>
+                </div>
+                <div class="custom-file">
+                  <input type="file" class="form-custom-file-input" id="bgImage" name="bgImage" disabled />
+                  <label class="custom-file-label" for="bgImage">Imagen de Fondo</label>
+                </div>
+              </div>
+              
               <input type="submit" class="btn btn-primary right" name="createTicket" value="Generar">
             </form>
           </div>
@@ -153,7 +163,15 @@
                 </div>
                 <input type="text" class="form-control" id="nota1" name="nota" disabled required maxlength="80"/>
               </div>
-
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <label class="input-group-text"><input type="checkbox" id="image1" name="image"/></label>
+                </div>
+                <div class="custom-file">
+                  <input type="file" class="form-custom-file-input" id="bgImage1" name="bgImage" disabled />
+                  <label class="custom-file-label" for="bgImage1">Imagen de Fondo</label>
+                </div>
+              </div>
               <input type="submit" class="btn btn-primary right" name="createTicketR" value="Continuar">
             </form>
           </div>
